@@ -1,7 +1,6 @@
 /*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
+ * Read three integers. The second integer must be be at least three times higher
+ * than the first integer and the third must be higher than the sum of the other two.
  */
 package askhsh2;
 
@@ -51,6 +50,8 @@ public class Askhsh2 {
            System.out.println("Second number needs to be at least 3 times higher than the first number");
            System.out.println("Third number needs to be higher than the sum of first and second number\n");
          }
+         else 
+           System.out.println("Good job!!!");
          
       } while(!flag); 
         
