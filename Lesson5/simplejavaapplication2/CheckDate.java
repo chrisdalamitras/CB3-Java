@@ -5,7 +5,7 @@
  */
 package simplejavaapplication2;
 
-import java.util.regex.PatternSyntaxException;
+import java.util.Calendar;
 
 /**
  *
@@ -15,22 +15,18 @@ public class CheckDate {
     
     public static boolean checkIdate(String strD){
         
-        String[] bd = new String[3];
-        
-        try{
-            String[] birthDate = strD.split("/");
-            if( birthDate.length > 3)
-                return false;    
-            else
-                for(int i=0; i<birthDate.length; i++)
-                    bd[i] = birthDate[i];                    
-        } catch(PatternSyntaxException e){
-            System.out.println("Throws exceprion"+e);
+        String[] birthDate = strD.split("/"); 
+        if (birthDate.length != 3)
             return false;
-        }
-        
+                
         try{
-            if(Integer.parseInt(bd[0]) > 31 || Integer.parseInt(bd[1]) > 12 || Integer.parseInt(bd[2]) > 2017)
+            int i = Integer.parseInt(birthDate[0]);
+            boolean flag1 = 0 >= i || i > 31;
+            i = Integer.parseInt(birthDate[1]);
+            boolean flag2 = 0 >= i || i > 12;
+            i = Integer.parseInt(birthDate[2]);
+            boolean flag3 = 1900 >= i || i > Calendar.getInstance().get(Calendar.YEAR);
+            if(flag1 || flag2 || flag3)
                 return false;    
             else
                 return true;            

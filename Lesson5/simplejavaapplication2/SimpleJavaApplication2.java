@@ -17,6 +17,8 @@ public class SimpleJavaApplication2 {
 
     /**
      * @param args the command line arguments
+     * @throws java.io.FileNotFoundException
+     * @throws java.io.UnsupportedEncodingException
      */
     public static void main(String[] args) throws FileNotFoundException, UnsupportedEncodingException {
         
@@ -26,11 +28,11 @@ public class SimpleJavaApplication2 {
         String[] line = new String[3];
         
         System.out.println("Give your first name:");
-        person.setFirstN(input.nextLine());
+        person.setName("first",input.nextLine());
         System.out.println("Give your last name:");
-        person.setLastN(input.nextLine());
+        person.setName("last",input.nextLine());
         System.out.println("Give your fathers name:");
-        person.setFatherN(input.nextLine());
+        person.setName("father",input.nextLine());
         System.out.println("Give your date of birth in the form DD/MM/YYYY e.g. 22/05/1990:");
         DateBirth = input.nextLine();
         while(!CheckDate.checkIdate(DateBirth)){
@@ -39,7 +41,7 @@ public class SimpleJavaApplication2 {
         }
         person.setBirthD_Age(DateBirth);
         
-        line[0] = person.getLastN()+", "+person.getFirstN()+", "+person.getFatherN();
+        line[0] = person.getName("last")+", "+person.getName("first")+", "+person.getName("father");
         line[1] = person.getBirthD();
         line[2] = Integer.toString(person.getAge());
         

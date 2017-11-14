@@ -8,6 +8,8 @@ package simplejavaapplication2;
 import java.io.FileNotFoundException;
 import java.io.PrintWriter;
 import java.io.UnsupportedEncodingException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /**
  *
@@ -15,13 +17,17 @@ import java.io.UnsupportedEncodingException;
  */
 public class FileWrite {
     
-    public static void filewriter(String[] line, Person person) throws FileNotFoundException, UnsupportedEncodingException{
+    public static void filewriter(String[] line, Person person) {
         
-        PrintWriter writer = new PrintWriter(person.getLastN()+"."+person.getFirstN()+".txt", "UTF-8");
-        for(int i=0; i<3; i++){
-            writer.println("Line " + (i+1) + ": " + line[i]);
+        PrintWriter writer;
+        try {
+            writer = new PrintWriter(person.getName("last")+"."+person.getName("first")+".txt", "UTF-8");
+            for(int i=0; i<line.length; i++)
+                writer.println("Line " + (i+1) + ": " + line[i]);
+            writer.close();
+        } catch (FileNotFoundException | UnsupportedEncodingException ex) {
+            Logger.getLogger(FileWrite.class.getName()).log(Level.SEVERE, null, ex);
         }
-         writer.close();
         
     }
     
