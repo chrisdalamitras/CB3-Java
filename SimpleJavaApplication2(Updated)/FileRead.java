@@ -30,6 +30,7 @@ public class FileRead {
                     counter += 1;
                 }                             
             }
+            br.close();
         } catch (FileNotFoundException ex) {
             Logger.getLogger(FileRead.class.getName()).log(Level.SEVERE, null, ex);
         } catch (IOException ex) {
